@@ -1,7 +1,7 @@
 # Python version 3.11.5
-Code from ChatGPT
-Made By Bank's : Thai translator H Game
-Link Discord : https://discord.gg/q6FkGCHv66 #
+# Code from ChatGPT
+# Made By Bank's : Thai translator H Game
+# Link Discord : https://discord.gg/q6FkGCHv66 
 
 โปรแกรมนี้ใช้เพื่อแยกประเภทของไฟล์ให้เป็น4ชนิด ภาษาอังกฤษทั้งหมด และ ภาษาไทยทั้งหมด และ  ภาษาไทย+ภาษาอังกฤษ และ ภาษาอื่น ๆ 
 This program is used to classify files into 4 types. All English and all Thai and Thai+English and other languages
