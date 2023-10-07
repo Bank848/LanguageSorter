@@ -1,4 +1,4 @@
-#Python version 3.11.5
+# Python version 3.11.5
 Code from ChatGPT
 Made By Bank's : Thai translator H Game
 Link Discord : https://discord.gg/q6FkGCHv66 #
