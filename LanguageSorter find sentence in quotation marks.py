@@ -17,6 +17,24 @@ def has_thai(text):
 def has_english(text):
     return bool(re.search('[A-Za-z]', text))
 
+def extract_thai_sentences(text):
+    # Extract sentences in Thai within double quotes
+    matches = re.findall(r'"(.*?)"', text)
+    return [match.strip() for match in matches if has_thai(match)]
+
+def detect_and_notify_thai_sentences(filepath):
+    with open(filepath, 'r', encoding='utf-8') as f:
+        content = f.readlines()
+    
+    lines_with_thai = []
+    for i, line in enumerate(content, start=1):
+        matches = re.findall(r'"(.*?)"', line)
+        thai_exist = any(has_thai(match) for match in matches)
+        if thai_exist:
+            lines_with_thai.append((i, extract_thai_sentences(line)))
+    
+    return lines_with_thai
+
 # Python version 3.11.5
 # Code from ChatGPT
 # Made By Bank's : Thai translator H Game
@@ -127,6 +145,15 @@ if proceed == 'yes':
                     destination_mapping[filepath] = ENG_ALL_directory
                 else:
                     destination_mapping[filepath] = Other_ALL_directory
+
+                # Newly added code to detect Thai sentences and record in result.txt
+                lines_with_thai = detect_and_notify_thai_sentences(filepath)
+
+                if lines_with_thai:
+                    with open('result.txt', 'a', encoding='utf-8') as result_file:
+                        result_file.write(f"{filename} - Thai sentences found:\n")
+                        for line_number, thai_sentences in lines_with_thai:
+                            result_file.write(f"  Line {line_number}: {', '.join(thai_sentences)}\n")
 
         for src, dest in tqdm(destination_mapping.items(), desc="Moving files", unit="file"):
             dest_path = os.path.join(dest, os.path.basename(src))
