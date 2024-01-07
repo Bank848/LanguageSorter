@@ -4,6 +4,7 @@
 # Link Discord : https://discord.gg/q6FkGCHv66
 
 # โปรแกรมนี้ใช้เพื่อแยกประเภทของไฟล์ให้เป็น4ชนิด ภาษาอังกฤษทั้งหมด และ ภาษาไทยทั้งหมด และ  ภาษาไทย+ภาษาอังกฤษ และ ภาษาอื่น ๆ 
+# พร้อมทั้งแจ้งผลประโยคภาษาไทยที่พบในวงเล็บหรือ""ลงไฟล์ result.txt ด้วย
 # This program is used to classify files into 4 types. All English and all Thai and Thai+English and other languages
 
 # How to use on PC
