@@ -72,10 +72,11 @@ if proceed == 'yes':
         ENG_ALL_directory = os.path.join(source_directory, 'ENG ALL')
         JP_ALL_directory = os.path.join(source_directory, 'JP ALL')
         JP_TH_ALL_directory = os.path.join(source_directory, 'JP+TH')
+        JP_ENG_ALL_directory = os.path.join(source_directory, 'JP+ENG')
         Other_ALL_directory = os.path.join(source_directory, 'Other ALL')
 
         # Create the directories if they don't exist
-        for directory in [TH_ALL_directory, TH_ENG_ALL_directory, ENG_ALL_directory, JP_ALL_directory, JP_TH_ALL_directory, Other_ALL_directory]:
+        for directory in [TH_ALL_directory, TH_ENG_ALL_directory, ENG_ALL_directory, JP_ALL_directory, JP_TH_ALL_directory, JP_ENG_ALL_directory, Other_ALL_directory]:
             if not os.path.exists(directory):
                 os.makedirs(directory)
 
@@ -94,10 +95,12 @@ if proceed == 'yes':
                 english_exist = any(has_english(match) for match in matches)
                 japanese_exist = any(has_japanese(match) for match in matches)
 
-                if japanese_exist and not thai_exist:
+                if japanese_exist and not thai_exist and not english_exist:
                     destination_mapping[filepath] = JP_ALL_directory
                 elif japanese_exist and thai_exist:
                     destination_mapping[filepath] = JP_TH_ALL_directory
+                elif japanese_exist and english_exist:
+                    destination_mapping[filepath] = JP_ENG_ALL_directory
                 elif thai_exist and not english_exist:
                     destination_mapping[filepath] = TH_ALL_directory
                 elif thai_exist and english_exist:
